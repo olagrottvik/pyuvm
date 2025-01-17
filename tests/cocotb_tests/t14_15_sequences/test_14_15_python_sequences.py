@@ -3,7 +3,10 @@ import uvm_unittest
 from pyuvm import *
 import cocotb
 import asyncio
-from cocotb.utils import get_sim_time
+if cocotb_version_info < (2, 0):
+    from cocotb.utils import get_sim_time
+else:
+    from cocotb.simulator import get_sim_time
 from cocotb.triggers import Timer
 
 

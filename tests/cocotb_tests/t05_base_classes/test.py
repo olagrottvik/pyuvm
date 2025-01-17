@@ -3,7 +3,10 @@ import pyuvm.utility_classes as utility_classes
 from pyuvm import *
 import pytest
 import inspect
-from cocotb.utils import get_sim_time
+if cocotb_version_info < (2, 0):
+    from cocotb.utils import get_sim_time
+else:
+    from cocotb.simulator import get_sim_time
 
 @cocotb.test()
 async def test_01_uvm_transaction_accept_time(dut):
